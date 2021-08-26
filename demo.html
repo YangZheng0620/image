@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+
+<!-- ------------------------------------------------------------------------ -->
+
+    <!--引用的一些样式-->
+
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/base.css" type="text/css"/>
+    <link rel="stylesheet" href="css/main.css" type="text/css"/> -->
+    <!-- 最新版本的 Bootstraps 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- font-awesome cdn -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.css" rel="stylesheet">
+    <!--引用的 vue 和 elementui 组建库-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <!-- axios cdn -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+
+  <!-- ------------------------------------------------------------------------ -->
+
+</head>
+<body>
+    <div id="app">
+        <el-row>
+            <el-row>
+                <el-col :span="3"><el-button type="success" @click="adds()">Add</el-button></el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="6"><el-input size="medium" v-model="input" placeholder="Please enter your name to search"></el-input></el-col>
+                <el-col :span="3"><el-button type="primary" @click="search()">Search</el-button></el-col>
+                <el-col :span="3"><el-button type="primary" @click="reset()">Reset</el-button></el-col>
+            </el-row>
+            
+            <el-table
+            :data="tableData"
+            stripe
+            style="width: 100%">
+                
+                <el-table-column type="index" width="50">  
+                </el-table-column>      <!-- 这个为序号 -->
+                
+                <el-table-column
+                prop="date"
+                label="Date"
+                width="180">
+                </el-table-column>
+                <el-table-column
+                prop="name"
+                label="Name"
+                width="180">
+                </el-table-column>
+                <el-table-column
+                prop="address"
+                label="Address">
+                </el-table-column>
+                <el-table-column
+                prop="concession"
+                label="Concession"
+                width="180">
+                </el-table-column>
+                <el-table-column >
+                    <!-- 让弹框显示 -->
+                    <template slot-scope="scope">
+                        <el-button type="primary" @click="sets(scope.row)">Update</el-button>
+                        <el-button type="danger" @click="removes(scope.row)">Delete</el-button>
+                        <el-button type="danger" @click="removes2(scope.row)">Consume</el-button>
+                    </template>
+                      
+                    
+                </el-table-column>
+            </el-table>
+        
+        
+        
+                <el-dialog title="Add" :visible.sync="el_show">
+                <el-form>
+                    <el-form-item label="Date" :label-width="formLabelWidth">
+                    <el-input v-model="date" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Name" :label-width="formLabelWidth">
+                    <el-input placeholder="请输入姓名" v-model="name" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Address" :label-width="formLabelWidth">
+                    <el-input placeholder="请输入地址" v-model="address" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Concession" :label-width="formLabelWidth">
+                        <el-input placeholder="请输入数量" v-model="concession" autocomplete="off"></el-input>
+                        </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button type="primary" @click="pushs()">Add</el-button>
+                    <el-button  @click="err()">Cancel</el-button>
+                </div>
+                </el-dialog>
+        
+        
+            
+                <el-dialog title="Update Information" :visible.sync="el_xiu">
+                <el-form>
+                    <el-form-item label="Date" :label-width="formLabelWidth">
+                    <el-input v-model="newtable.date" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Name" :label-width="formLabelWidth">
+                    <el-input placeholder="请输入姓名" v-model="newtable.name" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Address" :label-width="formLabelWidth">
+                    <el-input placeholder="请输入地址" v-model="newtable.address" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <el-form-item label="Concession" :label-width="formLabelWidth">
+                        <el-input placeholder="请输入数量" v-model="newtable.concession" autocomplete="off"></el-input>
+                        </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button type="primary" @click="trueset()">Update</el-button>
+                    <el-button  @click="xg_err()">Cancel</el-button>
+                </div>
+                </el-dialog>
+            
+              
+                
+              
+        
+        </el-row>   
+    </div>
+  
+</body>
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<!-- ------------------------------------------------------------------------ -->
+
+<script>
+ 
+const vm= new Vue({
+    el: '#app',
+    data() {
+      return {
+        searchs:[],
+        input:null,
+        searchtableData: [  //搜索框初始数据
+        {
+          date: '2021-12-02',
+          name: 'Ryan',
+          address: 'China',
+          id:0,
+          concession: 1
+        }, 
+        {
+          date: '2021-12-02',
+          name: 'Howard',
+          address: 'China',
+          id:1,
+          concession: 1
+        }, 
+        {
+          date: '2021-12-02',
+          name: 'David',
+          address: 'China',
+          id:2,
+          concession: 1
+        }, 
+        {
+          date: '2021-12-02',
+          name: 'Jack',
+          address: 'New Zealand',
+          id:3,
+          concession: 1
+        },
+        {
+          date: '2021-12-02',
+          name: 'Tom',
+          address: 'New Zealand',
+          id:4,
+          concession: 1
+        }
+        ],
+        tableData: [
+        {
+          date: '2021-12-02',
+          name: 'Ryan',
+          address: 'China',
+          id:0,
+          concession: 1
+        }, 
+        {
+          date: '2021-12-02',
+          name: 'Howard',
+          address: 'China',
+          id:1,
+          concession: 1
+        }, 
+        {
+          date: '2021-12-02',
+          name: 'David',
+          address: 'China',
+          id:2,
+          concession: 1
+        }, 
+        {
+          date: '2021-12-02',
+          name: 'Jack',
+          address: 'New Zealand',
+          id:3,
+          concession: 1
+        },
+        {
+          date: '2021-12-02',
+          name: 'Tom',
+          address: 'New Zealand',
+          id:4,
+          concession: 1
+        }
+        ],
+        el_show:false,
+        
+        el_xiu:false,
+        date:"",
+        name:"",
+        address:"",
+        concession:"",
+        newtable:{
+            date:"",
+            name:"",
+            address:"",
+            concession:""
+        },   //修改内容暂存区
+        formLabelWidth: '120px',
+        newid:0   //存储点击的id
+      }
+    },
+    methods:{
+    //搜索
+        search:function(){
+            console.log(this.input);
+            this.tableData.map((item)=>{
+                if(this.input==null||this.input==''){
+                    // this.$message({  在循环中会直接弹出多个同样提示框（不可用）
+                    //     message: '搜索内容不存在或搜索字段错误',
+                    //     type: 'warning'
+                    // });
+                    this.tableData=this.searchtableData;
+                    return;
+                }else if(item.name.includes(this.input)){ // eslint-disable-line no-unused-vars
+                    this.searchs=[]; //每次搜索前清空，否则会一直追加
+                    this.searchs.push(item);
+                    console.log(this.searchs);
+                    this.tableData=this.searchs;
+                    console.log(this.tableData);
+                    return;
+                }
+            })
+        },
+        // 重置
+        reset:function(){
+            this.input = '';
+            this.tableData=this.searchtableData;
+            console.log(this.input);
+            this.tableData.map((item)=>{
+                if(this.input==null||this.input==''){
+                    // this.$message({  在循环中会直接弹出多个同样提示框（不可用）
+                    //     message: '搜索内容不存在或搜索字段错误',
+                    //     type: 'warning'
+                    // });
+                    this.tableData=this.searchtableData;
+                    return;
+                }}
+            )
+        },
+        //新增让弹框显示
+        adds:function(){
+            this.el_show=true;
+            
+        },
+        //取消让弹框隐藏
+        err:function(){
+            this.el_show=false;
+        },
+        //删除某条信息
+        removes2:function(v){
+            console.log(v.id)
+            if(v.concession > 0){
+                v.concession = v.concession - 1
+            }else{
+                this.$message({
+                    type: 'warning',
+                    message: 'No more concessions!'
+                });
+            }
+            
+        },
+         //删除某条信息
+         removes:function(v){
+            console.log(v.id)
+            this.newid=this.tableData.findIndex((item)=>{
+              return item.id==v.id;
+            })
+            this.$confirm('This operation will permanently delete the file, do you want to continue?', 'Warning', {
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No',
+                type: 'warning'
+            }).then(() => {
+                this.$message({
+                    type: 'success',
+                    message: 'Delete Successfully!'
+                });
+                this.tableData.splice(this.newid,1);  //删除代码
+                this.searchtableData=this.tableData;  //绑定搜索框初始数据
+                console.log(this.tableData)
+            }).catch(() => {
+                this.$message({
+                    type: 'info',
+                    message: '已取消删除'
+                });          
+            });
+        },
+
+        //新增
+        pushs:function(){
+            if(!this.date||!this.name||!this.address||!this.concession){
+                this.$message.error('内容不能为空');
+                return;
+            }
+            //使用map方法获取到id的最大值
+            let ids = Math.max(...this.tableData.map(function(item){return item.id}))+1;
+            this.tableData.push({
+                    date:this.date,
+                    name:this.name,
+                    address:this.address,
+                    id:ids,
+                    concession:this.concession
+            })
+            this.searchtableData=this.tableData;  //绑定搜索框初始数据
+            this.$message({
+                message: '创建成功',
+                type: 'success'
+            });
+            this.date="",
+            this.name="",
+            this.address="",
+            this.concession=""
+            
+            this.el_show=false;
+        },
+
+        //修改
+        //弹出框 显示
+        sets:function(val){
+            this.el_xiu=true;
+           
+            console.log(val)
+            this.newtable={
+                date:val.date,
+                name:val.name,
+                address:val.address,
+                id:val.id,
+                concession:val.concession
+            }
+        },
+        xg_err:function(){
+            this.el_xiu=false;
+        },
+        //保存修改
+        trueset:function(){
+            console.log(this.newtable.date+"===")
+            console.log(this.newtable.concession+"===")
+            for(var i=0;i<this.tableData.length;i++){
+                if(this.tableData[i].id==this.newtable.id){
+                    this.tableData[i].date=this.newtable.date;
+                    this.tableData[i].name=this.newtable.name;
+                    this.tableData[i].address=this.newtable.address;
+                    this.tableData[i].id=this.newtable.id;
+                    this.tableData[i].concession=this.newtable.concession;
+                    this.el_xiu=false;
+                }
+            }
+            this.searchtableData=this.tableData;  //绑定搜索框初始数据
+        }
+        
+
+    }
+  }
+  )
+</script>
+
+</html>

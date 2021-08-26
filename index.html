@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+<!-- ------------------------------------------------------------------------ -->
+
+    <!--引用的一些样式-->
+
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- <link rel="stylesheet" href="css/base.css" type="text/css"/>
+    <link rel="stylesheet" href="css/main.css" type="text/css"/> -->
+    <!-- 最新版本的 Bootstraps 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- font-awesome cdn -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <!--引用的 vue 和 elementui 组建库-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <!-- axios cdn -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+    
+    
+    
+  <!-- ------------------------------------------------------------------------ -->
+
+</head>
+<body>
+
+<!-- header start -->
+      <nav class="navbar navbar-default navbar-inverse"  style="margin-bottom: 0px; border-radius: 0px;">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <p class="navbar-text">Welcome to Zumba with Davey</p>
+
+          </div>
+      
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              
+              <a class="navbar-brand" href="https://www.facebook.com/zumbawithdavey" target="_blank">
+                <i class="fa fa-facebook-square"></i>   
+              </a>
+              
+            </ul>
+            
+            <p class="navbar-text navbar-right">
+              <a href="#" class="navbar-link"><i class="fa fa-registered fa-lg"></i> Register</a>
+            </p>
+            
+            <p class="navbar-text navbar-right">
+              <a href="#" class="navbar-link"><i class="fa fa-user-circle fa-lg"></i> Sign in</a>
+            </p>
+
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+<!-- header end -->
+
+<!-- instruction header start -->
+
+<nav class="navbar navbar-default" style="background-color: white; margin-bottom: 0px;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="https://www.zumba.com/img/blt/logo.png" alt="Zumba" style="width: 200px; margin-left: 50px;">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">  
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right" style="font-size: large; margin: 20px 0px 20px 0px;">
+        <li><a href="#">Abouts</a></li>
+        <li><a href="#">Schedule</a></li>
+        <li><a href="#">Zumba</a></li>
+        <li><a href="#">Contact As</a></li>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- instruction header end -->
+
+<!-- carousel start -->
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+        </ol>
+      
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="https://wallpaperset.com/w/full/6/6/0/107339.jpg" alt="...">
+            <div class="carousel-caption">
+              <h3>Welcome to Zumba with Davey</h3>
+              <p>...</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="https://assets.wallpapersin4k.org/uploads/2017/04/Zumba-Dance-Wallpaper-23.jpg" alt="...">
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+          <div class="item">
+            <img src="https://wallpaperset.com/w/full/6/6/0/107339.jpg" alt="...">
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+          <div class="item">
+            <img src="https://assets.wallpapersin4k.org/uploads/2017/04/Zumba-Dance-Wallpaper-23.jpg" alt="...">
+            <div class="carousel-caption">
+              ...
+            </div>
+          </div>
+        </div>
+      
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+<!-- carousel end -->
+
+
+<!-- founder profile start -->
+
+<div class="row" style="background: url('https://www.zumba.com/img/blt/pattern-yellow.jpg') left 0 repeat;">
+  <div class="col-xs-4 col-md-2"></div>
+  <div class="col-xs-8 col-sm-6 col-md-6">
+    <h1><i class="fa fa-id-card fa-1x"></i> Founder Profile</h1>
+    <p class="founder"><b>Perfect For</b></p>
+    <p>
+      Those who want to party, but put extra emphasis on toning <br> 
+      and sculpting to define those muscles! </p>
+    
+    <p class="founder"><b>How It Works</b></p>
+    <p>
+      The challenge of adding resistance by using Zumba® Toning Sticks <br>
+      (or light weights), helps you focus on specific muscle groups, <br>
+      so you (and your muscles) stay engaged!</p>
+
+    <p class="founder"><b>Benefits</b></p>
+    <p>
+      Lightweight maraca-like Toning Sticks enhances sense of rhythm and <br>
+      coordination, while toning target zones, including arms, core and <br>
+      lower body. </p>
+  </div>
+  <div class="col-xs-6 col-md-4">
+    <img src="https://www.zumba.com/img/blt/classes/classes-video-step.jpg" alt="">
+  </div>
+</div>
+
+
+<!-- founder profile end -->
+
+
+<!-- About Us start -->
+
+<div class="row" style="background: url('https://www.zumba.com/img/blt/pattern-aqua.jpg') left 0 repeat;">
+  <div class="col-xs-4 col-md-2"></div>
+  <div class="col-xs-6 col-sm-6 col-md-4">
+    <h1 style="margin-top: 100px;"><i class="fa fa-google-plus fa-1x fa-spin"></i> About Us</h1>
+    <p class="founder"><b>Perfect For</b></p>
+    <p style="margin-bottom: 20px;">
+      Those who want to party, but put extra emphasis on toning <br> 
+      and sculpting to define those muscles! </p>
+    
+    <button type="button" class="btn btn-link btn-lg" style="border-color:crimson; color:white;">
+      More <i class="fa fa-angle-double-right"></i>
+    </button>
+  </div>
+  <div class="col-xs-8 col-md-6">
+    <iframe src="https://xbeibeix.com/api/bilibili/biliplayer/?url=BV1Lx411M7cb" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+  </div>
+</div>
+
+
+<!-- About Us end -->
+
+<!-- Class start -->
+
+<div class="row" style="background: url('https://www.zumba.com/img/blt/pattern-gold.jpg') left 0 repeat;">
+  <h1 class="about">Class</h1>
+  <h3 class="about"><small>SO MUCH MORE THAN DANCE</small></h3>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="https://images.prismic.io/zumba/91da545b-7e05-4814-97e5-bd7ec0bb1010_Multiblock_01-Livestreams_Mobile.jpg" alt="...">
+      <div class="caption">
+        <h3 class="about">VIRTUAL CLASSES</h3>
+        <p class="about">Access Zumba® classes from <br>
+          instructors around the world.</p>
+        <p class="about"><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="https://images.prismic.io/zumba/8a6d515a-e9dd-4850-aa1a-db132af9f4ad_thumbnails_mobile.jpg" alt="...">
+      <div class="caption">
+        <h3 class="about">BSET. FIESTA. EVER!</h3>
+        <p class="about">Relive some of the magic moments from our  <br>
+          epic 20th birthday party!</p>
+        <p class="about"><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="https://images.prismic.io/zumba/e7bc38b5-2541-4337-a388-3a055fa50497_Multiblock_03-FollowUs_Mobile.jpg" alt="...">
+      <div class="caption" style="text-align: center;">
+        <h3 class="about">FOLLOW Us</h3>
+        <p class="about">Join our global community of divas and dancers  <br>
+          for a taste of the Zumba® experience!</p>
+        <p class="about"><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Class end -->
+
+
+<!-- Schedule start -->
+<h1 style="text-align: center;">Schedule</h1>
+<div id="app">
+  <el-calendar>
+    <!-- 这里使用的是 2.5 slot 语法，对于新项目请使用 2.6 slot 语法-->
+    <template
+      slot="dateCell"
+      slot-scope="{date, data}">
+      <p :class="data.isSelected ? 'is-selected' : ''">
+        {{ data.day.split('-').slice(1).join('-') }} {{ data.isSelected ? '✔️' : ''}}
+        
+      </p>
+    </template>
+  </el-calendar>
+</div>
+
+<!-- Schedule end -->
+
+
+<!-- footer start -->
+  <div class="row" style="text-align: center; background-color: #2c2d37; color: whitesmoke;">
+    <div class="col-xs-3 col-md-1"></div>
+    <div class="col-xs-4 col-md-3">
+      <h3>menu</h3> <br>
+      <p>About</p>
+      <p>Schedule</p>
+      <p>Zumba</p>
+      <p>Contact Us</p>
+    </div>
+    <div class="col-xs-4 col-md-3">
+      <h3>Zumba with Davey</h3> <br>
+      <p>We are committed to be the best <br> Zumba club for you.</p>
+    </div>
+    <div class="col-xs-4 col-md-3">
+      <h3>menu</h3> <br>
+      <p>About</p>
+      <p>Schedule</p>
+      <p>Zumba</p>
+      <p>Contact Us</p>
+    </div>
+    <div class="col-xs-3 col-md-1"></div>
+  </div>
+
+
+<!-- footer end -->
+
+
+
+<!-- copyright start  -->
+
+	<div class="row" style="background-color: black;">
+    <div class="col-xs-18 col-md-12"> 
+      <p style="color: grey; text-align: center; margin-top: 10px;">Copyright © 2021 Zumba with Devay</p>
+    </div>
+  </div>
+
+<!-- copyright end  -->
+
+</body>
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<!-- import language file -->
+<script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
+<script>ELEMENT.locale(ELEMENT.lang.en)</script>
+
+
+<!-- ------------------------------------------------------------------------ -->
+
+<script>
+  new Vue({
+    el: '#app',
+    data: function() {
+      return { value: new Date() }
+    }
+  })
+</script>
+
+</html>
